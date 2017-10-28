@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C799AD371FA5381900122184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD361FA5381900122184 /* AppDelegate.swift */; };
+		C799AD391FA5381900122184 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C799AD381FA5381900122184 /* art.scnassets */; };
+		C799AD3B1FA5381900122184 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD3A1FA5381900122184 /* ViewController.swift */; };
+		C799AD3E1FA5381900122184 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C799AD3C1FA5381900122184 /* Main.storyboard */; };
+		C799AD401FA5381900122184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C799AD3F1FA5381900122184 /* Assets.xcassets */; };
+		C799AD431FA5381900122184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C799AD411FA5381900122184 /* LaunchScreen.storyboard */; };
+		C799AD4E1FA5381A00122184 /* recognEYESTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD4D1FA5381A00122184 /* recognEYESTests.swift */; };
+		C799AD591FA5381A00122184 /* recognEYESUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD581FA5381A00122184 /* recognEYESUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C799AD4A1FA5381A00122184 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C799AD2B1FA5381900122184 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C799AD321FA5381900122184;
+			remoteInfo = recognEYES;
+		};
+		C799AD551FA5381A00122184 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C799AD2B1FA5381900122184 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C799AD321FA5381900122184;
+			remoteInfo = recognEYES;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C799AD331FA5381900122184 /* recognEYES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recognEYES.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C799AD361FA5381900122184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C799AD381FA5381900122184 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		C799AD3A1FA5381900122184 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C799AD3D1FA5381900122184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C799AD3F1FA5381900122184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C799AD421FA5381900122184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C799AD441FA5381900122184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C799AD491FA5381A00122184 /* recognEYESTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recognEYESTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C799AD4D1FA5381A00122184 /* recognEYESTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recognEYESTests.swift; sourceTree = "<group>"; };
+		C799AD4F1FA5381A00122184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C799AD541FA5381A00122184 /* recognEYESUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recognEYESUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C799AD581FA5381A00122184 /* recognEYESUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recognEYESUITests.swift; sourceTree = "<group>"; };
+		C799AD5A1FA5381A00122184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C799AD301FA5381900122184 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C799AD461FA5381A00122184 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C799AD511FA5381A00122184 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C799AD2A1FA5381900122184 = {
+			isa = PBXGroup;
+			children = (
+				C799AD351FA5381900122184 /* recognEYES */,
+				C799AD4C1FA5381A00122184 /* recognEYESTests */,
+				C799AD571FA5381A00122184 /* recognEYESUITests */,
+				C799AD341FA5381900122184 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C799AD341FA5381900122184 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C799AD331FA5381900122184 /* recognEYES.app */,
+				C799AD491FA5381A00122184 /* recognEYESTests.xctest */,
+				C799AD541FA5381A00122184 /* recognEYESUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C799AD351FA5381900122184 /* recognEYES */ = {
+			isa = PBXGroup;
+			children = (
+				C799AD361FA5381900122184 /* AppDelegate.swift */,
+				C799AD381FA5381900122184 /* art.scnassets */,
+				C799AD3A1FA5381900122184 /* ViewController.swift */,
+				C799AD3C1FA5381900122184 /* Main.storyboard */,
+				C799AD3F1FA5381900122184 /* Assets.xcassets */,
+				C799AD411FA5381900122184 /* LaunchScreen.storyboard */,
+				C799AD441FA5381900122184 /* Info.plist */,
+			);
+			path = recognEYES;
+			sourceTree = "<group>";
+		};
+		C799AD4C1FA5381A00122184 /* recognEYESTests */ = {
+			isa = PBXGroup;
+			children = (
+				C799AD4D1FA5381A00122184 /* recognEYESTests.swift */,
+				C799AD4F1FA5381A00122184 /* Info.plist */,
+			);
+			path = recognEYESTests;
+			sourceTree = "<group>";
+		};
+		C799AD571FA5381A00122184 /* recognEYESUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C799AD581FA5381A00122184 /* recognEYESUITests.swift */,
+				C799AD5A1FA5381A00122184 /* Info.plist */,
+			);
+			path = recognEYESUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C799AD321FA5381900122184 /* recognEYES */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C799AD5D1FA5381A00122184 /* Build configuration list for PBXNativeTarget "recognEYES" */;
+			buildPhases = (
+				C799AD2F1FA5381900122184 /* Sources */,
+				C799AD301FA5381900122184 /* Frameworks */,
+				C799AD311FA5381900122184 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = recognEYES;
+			productName = recognEYES;
+			productReference = C799AD331FA5381900122184 /* recognEYES.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C799AD481FA5381A00122184 /* recognEYESTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C799AD601FA5381A00122184 /* Build configuration list for PBXNativeTarget "recognEYESTests" */;
+			buildPhases = (
+				C799AD451FA5381A00122184 /* Sources */,
+				C799AD461FA5381A00122184 /* Frameworks */,
+				C799AD471FA5381A00122184 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C799AD4B1FA5381A00122184 /* PBXTargetDependency */,
+			);
+			name = recognEYESTests;
+			productName = recognEYESTests;
+			productReference = C799AD491FA5381A00122184 /* recognEYESTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C799AD531FA5381A00122184 /* recognEYESUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C799AD631FA5381A00122184 /* Build configuration list for PBXNativeTarget "recognEYESUITests" */;
+			buildPhases = (
+				C799AD501FA5381A00122184 /* Sources */,
+				C799AD511FA5381A00122184 /* Frameworks */,
+				C799AD521FA5381A00122184 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C799AD561FA5381A00122184 /* PBXTargetDependency */,
+			);
+			name = recognEYESUITests;
+			productName = recognEYESUITests;
+			productReference = C799AD541FA5381A00122184 /* recognEYESUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C799AD2B1FA5381900122184 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = recognEYES;
+				TargetAttributes = {
+					C799AD321FA5381900122184 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					C799AD481FA5381A00122184 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C799AD321FA5381900122184;
+					};
+					C799AD531FA5381A00122184 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C799AD321FA5381900122184;
+					};
+				};
+			};
+			buildConfigurationList = C799AD2E1FA5381900122184 /* Build configuration list for PBXProject "recognEYES" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C799AD2A1FA5381900122184;
+			productRefGroup = C799AD341FA5381900122184 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C799AD321FA5381900122184 /* recognEYES */,
+				C799AD481FA5381A00122184 /* recognEYESTests */,
+				C799AD531FA5381A00122184 /* recognEYESUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C799AD311FA5381900122184 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C799AD391FA5381900122184 /* art.scnassets in Resources */,
+				C799AD431FA5381900122184 /* LaunchScreen.storyboard in Resources */,
+				C799AD401FA5381900122184 /* Assets.xcassets in Resources */,
+				C799AD3E1FA5381900122184 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C799AD471FA5381A00122184 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C799AD521FA5381A00122184 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C799AD2F1FA5381900122184 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C799AD3B1FA5381900122184 /* ViewController.swift in Sources */,
+				C799AD371FA5381900122184 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C799AD451FA5381A00122184 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C799AD4E1FA5381A00122184 /* recognEYESTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C799AD501FA5381A00122184 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C799AD591FA5381A00122184 /* recognEYESUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C799AD4B1FA5381A00122184 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C799AD321FA5381900122184 /* recognEYES */;
+			targetProxy = C799AD4A1FA5381A00122184 /* PBXContainerItemProxy */;
+		};
+		C799AD561FA5381A00122184 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C799AD321FA5381900122184 /* recognEYES */;
+			targetProxy = C799AD551FA5381A00122184 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C799AD3C1FA5381900122184 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C799AD3D1FA5381900122184 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C799AD411FA5381900122184 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C799AD421FA5381900122184 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C799AD5B1FA5381A00122184 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C799AD5C1FA5381A00122184 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C799AD5E1FA5381A00122184 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZX885WV83E;
+				INFOPLIST_FILE = recognEYES/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = recognEYES.recognEYES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C799AD5F1FA5381A00122184 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZX885WV83E;
+				INFOPLIST_FILE = recognEYES/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = recognEYES.recognEYES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C799AD611FA5381A00122184 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZX885WV83E;
+				INFOPLIST_FILE = recognEYESTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = recognEYES.recognEYESTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/recognEYES.app/recognEYES";
+			};
+			name = Debug;
+		};
+		C799AD621FA5381A00122184 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZX885WV83E;
+				INFOPLIST_FILE = recognEYESTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = recognEYES.recognEYESTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/recognEYES.app/recognEYES";
+			};
+			name = Release;
+		};
+		C799AD641FA5381A00122184 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZX885WV83E;
+				INFOPLIST_FILE = recognEYESUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = recognEYES.recognEYESUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = recognEYES;
+			};
+			name = Debug;
+		};
+		C799AD651FA5381A00122184 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZX885WV83E;
+				INFOPLIST_FILE = recognEYESUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = recognEYES.recognEYESUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = recognEYES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C799AD2E1FA5381900122184 /* Build configuration list for PBXProject "recognEYES" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C799AD5B1FA5381A00122184 /* Debug */,
+				C799AD5C1FA5381A00122184 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C799AD5D1FA5381A00122184 /* Build configuration list for PBXNativeTarget "recognEYES" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C799AD5E1FA5381A00122184 /* Debug */,
+				C799AD5F1FA5381A00122184 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C799AD601FA5381A00122184 /* Build configuration list for PBXNativeTarget "recognEYESTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C799AD611FA5381A00122184 /* Debug */,
+				C799AD621FA5381A00122184 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C799AD631FA5381A00122184 /* Build configuration list for PBXNativeTarget "recognEYESUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C799AD641FA5381A00122184 /* Debug */,
+				C799AD651FA5381A00122184 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C799AD2B1FA5381900122184 /* Project object */;
+}
