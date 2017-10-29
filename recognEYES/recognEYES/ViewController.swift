@@ -62,6 +62,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        settingsButton.backgroundColor = UIColor.blue
+        button.addTarget(self, action: #selector(settingsButtonTapped), for: UIControlEvents.touchUpInside)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
