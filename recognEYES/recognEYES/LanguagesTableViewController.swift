@@ -18,6 +18,7 @@ class LanguagesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.tableFooterView = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,34 +27,25 @@ class LanguagesTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    
+    /*
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
         
         let currentCell = tableView.cellForRow(at: indexPath!) as UITableViewCell!
         
+        print(currentCell?.reuseIdentifier)
+        print("should give reuse")
         Constants.Settings.language = (currentCell?.textLabel!.text)!
     }
+    */
     
-    func tableView(_tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath) as UITableViewCell!
+        Constants.Languages.targetLang = (currentCell?.reuseIdentifier)!
+        print(Constants.Languages.targetLang)
         
-//        var selectedRowPath: IndexPath? = tableView.indexPathForSelectedRow
-//        if(selectedRowPath.Label.text == "english"){
-//            let languages = selectedRowPath.Label.text
-        }
-     
-    
+    }
  
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        let cell = tableView.objectAtIndex(indexPath)

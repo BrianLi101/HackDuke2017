@@ -33,6 +33,38 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        button.backgroundColor = UIColor.red
+        button.addTarget(self, action: #selector(resetButtonTapped), for: UIControlEvents.touchUpInside)
+        sceneView.addSubview(button)
+        button.center = CGPoint(x: button.frame.width, y: button.frame.height)
+        
+        let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        settingsButton.backgroundColor = UIColor.blue
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: UIControlEvents.touchUpInside)
+        sceneView.addSubview(settingsButton)
+        settingsButton.center = CGPoint(x: self.view.frame.width - settingsButton.frame.width, y: settingsButton.frame.height)
+    }
+    
+    @objc func resetButtonTapped() {
+        print("shoudl reset")
+        
+        guard let sceneView = self.sceneView else {
+            return
+        }
+        
+        for node in sceneView.scene.rootNode.childNodes {
+            node.removeFromParentNode()
+        }
+        
+        //sceneView.scene.rootNode.enumerateChildNodes((node, stop) -> Void, in
+           // node.removeFromParentNode())
+    }
+    
+    @objc func settingsButtonTapped() {
+        print("shoudl perform sgue")
+        self.performSegue(withIdentifier: "openSettings", sender: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -224,15 +256,24 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
 
                             if let tags = tagsCaptions["tags"] as? [String] {
                                 // this is the label that is attached to an object and the best achieved singular description
-                                self.drawLabel(descrip: tags[0])
-                                self.textToSpeech(text: tags[0])
+                                if (tags[0] == "indoor" || tags[0] == "outdoor") {
+                                    let translated = self.translate(text: tags[1], from: "en", to: "es")
+                                    //sleep(10)
+                                    self.drawLabel(descrip: translated)
+                                    self.textToSpeech(text: translated)
+                                }
+                                else{
+                                    let translated = self.translate(text: tags[0], from: "en", to: "es")
+                                    //sleep(10)
+                                    self.drawLabel(descrip: translated)
+                                    self.textToSpeech(text: translated)
+                                }
                             }
                             
                             if let captions = tagsCaptions["captions"] as? [Any] {
                                 if let best = captions[0] as? [String: Any] {
                                     let typeString = String(describing: type(of: best))
                                     print(typeString)
-                                    dump(best)
                                     if let set = best["text"] as? String {
                                         // this is the best version of a description of what's going on
                                         self.textToSpeech(text: set)
@@ -252,7 +293,52 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         task.resume()
     }
     
+    
+    func translate(text: String, from: String, to: String)->String {
+        print("received text" + text)
+        let toLanguageComponent = "&to=\(to)"
+        let fromLanguageComponent = "&from=\(from)"
+        let urlString = "https://api.microsofttranslator.com/v2/Http.svc/Translate?text=\(text)\(toLanguageComponent)\(fromLanguageComponent)"
+            
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
+        request.httpMethod = "GET"
+        request.addValue("c7ee5095141941e89716a7b3388fce8f", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+        request.addValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        var translation = ""
+
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {(data, response, error) in
+            if let data = data {
+                guard let xmlString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
+                else {
+                    return
+                }
+                
+                translation = self.translationFromXML(XML: xmlString)
+                print("the trans is " + translation)
+                print("shoudldraw" + translation)
+                self.drawLabel(descrip: translation)
+                do {
+                    let dict = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                } catch {
+                }
+            } else {
+                return
+            }
+        }
+        task.resume()
+        
+        return translation
+
+    }
+
+    private func translationFromXML(XML: String) -> String {
+        let translation = XML.replacingOccurrences(of: "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">", with: "")
+        return translation.replacingOccurrences(of: "</string>", with: "")
+    }
+ 
+    
     func drawLabel(descrip: String) {
+        print("this is " + descrip)
         let text = SCNText(string: descrip, extrusionDepth: 0.01)
         text.firstMaterial?.diffuse.contents = UIColor.white
         text.font = UIFont(name: "Arial", size: 0.2)
