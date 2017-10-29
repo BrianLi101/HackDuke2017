@@ -10,7 +10,10 @@ struct Constants {
     struct Settings {
         static var phrasesOn = false
         static var language = ""
+    }
     
+    struct Languages {
+        static var targetLang = "english"
     }
 }
 

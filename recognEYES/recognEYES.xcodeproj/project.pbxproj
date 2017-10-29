@@ -16,7 +16,6 @@
 		C799AD431FA5381900122184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C799AD411FA5381900122184 /* LaunchScreen.storyboard */; };
 		C799AD4E1FA5381A00122184 /* recognEYESTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD4D1FA5381A00122184 /* recognEYESTests.swift */; };
 		C799AD591FA5381A00122184 /* recognEYESUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD581FA5381A00122184 /* recognEYESUITests.swift */; };
-		C799AD671FA5482D00122184 /* CognitiveServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD661FA5482D00122184 /* CognitiveServices.swift */; };
 		CBC0D9E11FA5B2A600566242 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0D9E01FA5B2A600566242 /* SettingsTableViewController.swift */; };
 		CBC0D9E71FA5B54A00566242 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0D9E61FA5B54A00566242 /* Constants.swift */; };
 		CBC0D9E91FA5B66C00566242 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC0D9E81FA5B66C00566242 /* LanguagesTableViewController.swift */; };
@@ -55,7 +54,6 @@
 		C799AD541FA5381A00122184 /* recognEYESUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recognEYESUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C799AD581FA5381A00122184 /* recognEYESUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recognEYESUITests.swift; sourceTree = "<group>"; };
 		C799AD5A1FA5381A00122184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C799AD661FA5482D00122184 /* CognitiveServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitiveServices.swift; sourceTree = "<group>"; };
 		CBC0D9E01FA5B2A600566242 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		CBC0D9E61FA5B54A00566242 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CBC0D9E81FA5B66C00566242 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			children = (
 				A165A77C1FA57EB8006E4101 /* reclaunchscreen.png */,
 				C799AD361FA5381900122184 /* AppDelegate.swift */,
-				C799AD661FA5482D00122184 /* CognitiveServices.swift */,
 				C799AD381FA5381900122184 /* art.scnassets */,
 				C799AD3A1FA5381900122184 /* ViewController.swift */,
 				C799AD3C1FA5381900122184 /* Main.storyboard */,
@@ -282,7 +279,6 @@
 				CBC0D9E71FA5B54A00566242 /* Constants.swift in Sources */,
 				CBC0D9E91FA5B66C00566242 /* LanguagesTableViewController.swift in Sources */,
 				CBC0D9E11FA5B2A600566242 /* SettingsTableViewController.swift in Sources */,
-				C799AD671FA5482D00122184 /* CognitiveServices.swift in Sources */,
 				C799AD3B1FA5381900122184 /* ViewController.swift in Sources */,
 				C799AD371FA5381900122184 /* AppDelegate.swift in Sources */,
 			);

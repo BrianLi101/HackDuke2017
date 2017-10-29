@@ -39,9 +39,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         button.addTarget(self, action: #selector(resetButtonTapped), for: UIControlEvents.touchUpInside)
         sceneView.addSubview(button)
         button.center = CGPoint(x: button.frame.width, y: button.frame.height)
+        
+        let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        settingsButton.backgroundColor = UIColor.blue
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: UIControlEvents.touchUpInside)
+        sceneView.addSubview(settingsButton)
+        settingsButton.center = CGPoint(x: self.view.frame.width - settingsButton.frame.width, y: settingsButton.frame.height)
     }
     
     @objc func resetButtonTapped() {
+        print("shoudl reset")
+        
         guard let sceneView = self.sceneView else {
             return
         }
@@ -54,6 +62,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
            // node.removeFromParentNode())
     }
     
+    @objc func settingsButtonTapped() {
+        print("shoudl perform sgue")
+        self.performSegue(withIdentifier: "openSettings", sender: self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -62,10 +75,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         
         // Run the view's session
         sceneView.session.run(configuration)
-        
-        let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        settingsButton.backgroundColor = UIColor.blue
-        button.addTarget(self, action: #selector(settingsButtonTapped), for: UIControlEvents.touchUpInside)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
