@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A165A77D1FA57EB8006E4101 /* reclaunchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A165A77C1FA57EB8006E4101 /* reclaunchscreen.png */; };
 		C799AD371FA5381900122184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD361FA5381900122184 /* AppDelegate.swift */; };
 		C799AD391FA5381900122184 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C799AD381FA5381900122184 /* art.scnassets */; };
 		C799AD3B1FA5381900122184 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799AD3A1FA5381900122184 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A165A77C1FA57EB8006E4101 /* reclaunchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reclaunchscreen.png; sourceTree = "<group>"; };
 		C799AD331FA5381900122184 /* recognEYES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recognEYES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C799AD361FA5381900122184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C799AD381FA5381900122184 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		C799AD351FA5381900122184 /* recognEYES */ = {
 			isa = PBXGroup;
 			children = (
+				A165A77C1FA57EB8006E4101 /* reclaunchscreen.png */,
 				C799AD361FA5381900122184 /* AppDelegate.swift */,
 				C799AD661FA5482D00122184 /* CognitiveServices.swift */,
 				C799AD381FA5381900122184 /* art.scnassets */,
@@ -240,6 +243,7 @@
 			files = (
 				C799AD391FA5381900122184 /* art.scnassets in Resources */,
 				C799AD431FA5381900122184 /* LaunchScreen.storyboard in Resources */,
+				A165A77D1FA57EB8006E4101 /* reclaunchscreen.png in Resources */,
 				C799AD401FA5381900122184 /* Assets.xcassets in Resources */,
 				C799AD3E1FA5381900122184 /* Main.storyboard in Resources */,
 			);
