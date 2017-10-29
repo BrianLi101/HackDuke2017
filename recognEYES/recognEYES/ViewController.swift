@@ -82,6 +82,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -94,6 +95,26 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         if let currentFrame = sceneView.session.currentFrame {
             DispatchQueue.global(qos: .background).async {
                 do {
+
+                    var image = sceneView.snapshot()
+                    
+                    self.getData(image: image)
+                    
+                    
+                    
+                    /*
+                    let manager = CognitiveServicesManager()
+                    manager.retrievePlausibleTagsForImage(image) { (result, error) -> (Void) in
+                        DispatchQueue.main.async(execute: {
+                            print("result received")
+                            //print(result?.first)
+                            dump(result)
+                            print(error)
+                        })
+                    }
+                     */
+                    
+                    /*
                     let model = try VNCoreMLModel(for: VGG16().model)
                     let request = VNCoreMLRequest(model: model, completionHandler: { (request, error) in
                         // Jump onto the main thread
@@ -141,6 +162,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
                     
                     let handler = VNImageRequestHandler(cvPixelBuffer: currentFrame.capturedImage, options: [:])
                     try handler.perform([request])
+ */
                 } catch {}
             }
         }
@@ -156,5 +178,79 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         synth.speak(utterance)
     }
     
+    
+    func getData(image: UIImage) {
+
+        // We need to specify that we want to retrieve tags for our image as a parameter to the URL.
+        var urlString = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/describe?maxCandidates=1"
+        
+        let url = URL(string: urlString)
+        let request = NSMutableURLRequest(url: url!)
+        
+        // The subscription key is always added as an HTTP header field.
+        request.addValue("b232ea13794a40a68c4325a0953cc3de", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+        // We need to specify that we're sending the image as binary data, since it's possible to supply a JSON-wrapped URL instead.
+        request.addValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        
+        // Convert the image reference to a JPEG binary to submit to the service. If this ends up being over 4 MB, it'll throw an error
+        // on the server side. In a production environment, you would check for this condition and handle it gracefully (either reduce
+        // the quality, resize the image or prompt the user to take an action).
+        let requestData = UIImageJPEGRepresentation(image, 0.9 as CGFloat)
+        request.httpBody = requestData
+        request.httpMethod = "POST"
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if let error = error {
+                // In case of an error, handle it immediately and exit without doing anything else.
+                //completion(nil, error as NSError)
+                print("there was an error")
+                return
+            }
+            
+            if let data = data {
+                do {
+                    dump(data)
+                    let collectionObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                    
+                    if let dictionary = collectionObject as? [String: Any] {
+                        // Enumerate through the result tags and find those with a high enough confidence rating, disregard the rest.
+                        
+                        if let alltags = dictionary["description"] as? [String: Any] {
+
+                            if let tags = alltags["tags"] as? [String] {
+                                self.drawLabel(descrip: tags[0])
+                                self.textToSpeech(text: tags[0])
+                            }
+                        }
+                    }
+                }
+                catch _ {
+                }
+            } else {
+                return
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func drawLabel(descrip: String) {
+        let text = SCNText(string: descrip, extrusionDepth: 0.01)
+        text.firstMaterial?.diffuse.contents = UIColor.white
+        text.font = UIFont(name: "Arial", size: 0.2)
+        
+        let textNode = SCNNode(geometry: text)
+        
+        
+        let camera = self.sceneView.pointOfView!
+        let position = SCNVector3(x: -Float(Double(descrip.count) / 2 * 0.1), y: -1.5, z: -5)
+        textNode.position = camera.convertPosition(position, to: nil)
+        textNode.rotation = camera.rotation
+        
+        sceneView.scene.rootNode.addChildNode(textNode)
+        
+    }
 }
 
