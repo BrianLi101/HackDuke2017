@@ -211,17 +211,29 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
             
             if let data = data {
                 do {
-                    dump(data)
                     let collectionObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
                     
                     if let dictionary = collectionObject as? [String: Any] {
                         // Enumerate through the result tags and find those with a high enough confidence rating, disregard the rest.
                         
-                        if let alltags = dictionary["description"] as? [String: Any] {
+                        if let tagsCaptions = dictionary["description"] as? [String: Any] {
 
-                            if let tags = alltags["tags"] as? [String] {
+                            if let tags = tagsCaptions["tags"] as? [String] {
+                                // this is the label that is attached to an object and the best achieved singular description
                                 self.drawLabel(descrip: tags[0])
                                 self.textToSpeech(text: tags[0])
+                            }
+                            
+                            if let captions = tagsCaptions["captions"] as? [Any] {
+                                if let best = captions[0] as? [String: Any] {
+                                    let typeString = String(describing: type(of: best))
+                                    print(typeString)
+                                    dump(best)
+                                    if let set = best["text"] as? String {
+                                        // this is the best version of a description of what's going on
+                                        self.textToSpeech(text: set)
+                                    }
+                                }
                             }
                         }
                     }
