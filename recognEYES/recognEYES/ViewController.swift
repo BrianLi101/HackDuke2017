@@ -199,7 +199,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
     
     
     func getData(image: UIImage) {
-        self.translate(text: "hello", from: "en", to: "de")
 
         // We need to specify that we want to retrieve tags for our image as a parameter to the URL.
         var urlString = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/describe?maxCandidates=1"
@@ -241,12 +240,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
                             if let tags = tagsCaptions["tags"] as? [String] {
                                 // this is the label that is attached to an object and the best achieved singular description
                                 if (tags[0] == "indoor" || tags[0] == "outdoor") {
-                                    self.drawLabel(descrip: tags[1])
-                                    self.textToSpeech(text: tags[1])
+                                    let translated = self.translate(text: tags[1], from: "en", to: "es")
+                                    //sleep(10)
+                                    self.drawLabel(descrip: translated)
+                                    self.textToSpeech(text: translated)
                                 }
                                 else{
-                                    self.drawLabel(descrip: tags[0])
-                                    self.textToSpeech(text: tags[0])
+                                    let translated = self.translate(text: tags[0], from: "en", to: "es")
+                                    //sleep(10)
+                                    self.drawLabel(descrip: translated)
+                                    self.textToSpeech(text: translated)
                                 }
                             }
                             
@@ -274,40 +277,41 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
     }
     
     
-    func translate(text: String, from: String, to: String) {
+    func translate(text: String, from: String, to: String)->String {
+        print("received text" + text)
+        let toLanguageComponent = "&to=\(to)"
+        let fromLanguageComponent = "&from=\(from)"
+        let urlString = "https://api.microsofttranslator.com/v2/Http.svc/Translate?text=\(text)\(toLanguageComponent)\(fromLanguageComponent)"
+            
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
+        request.httpMethod = "GET"
+        request.addValue("c7ee5095141941e89716a7b3388fce8f", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+        request.addValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        var translation = ""
 
-            let toLanguageComponent = "&to=\(to)"
-            let fromLanguageComponent = "&from=\(from)"
-            let urlString = "https://api.microsofttranslator.com/v2/Http.svc/Translate?text=\(text)\(toLanguageComponent)\(fromLanguageComponent)"
-            
-            let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
-            request.httpMethod = "GET"
-            request.addValue("c7ee5095141941e89716a7b3388fce8f", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
-            request.addValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
-            
         let task = URLSession.shared.dataTask(with: request as URLRequest) {(data, response, error) in
             if let data = data {
-                dump(data)
-                
                 guard let xmlString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
                 else {
                     return
                 }
                 
-                let translation = self.translationFromXML(XML: xmlString)
-                dump(translation)
+                translation = self.translationFromXML(XML: xmlString)
+                print("the trans is " + translation)
+                print("shoudldraw" + translation)
+                self.drawLabel(descrip: translation)
                 do {
-                    print("entered yay!!!!")
                     let dict = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                    dump(dict)
                 } catch {
-                    print("cucked")
                 }
             } else {
                 return
             }
         }
         task.resume()
+        
+        return translation
+
     }
 
     private func translationFromXML(XML: String) -> String {
@@ -317,6 +321,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
  
     
     func drawLabel(descrip: String) {
+        print("this is " + descrip)
         let text = SCNText(string: descrip, extrusionDepth: 0.01)
         text.firstMaterial?.diffuse.contents = UIColor.white
         text.font = UIFont(name: "Arial", size: 0.2)
