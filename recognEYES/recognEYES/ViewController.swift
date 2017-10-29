@@ -132,19 +132,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
                     
                     self.getData(image: image)
                     
-                    
-                    
-                    /*
-                    let manager = CognitiveServicesManager()
-                    manager.retrievePlausibleTagsForImage(image) { (result, error) -> (Void) in
-                        DispatchQueue.main.async(execute: {
-                            print("result received")
-                            //print(result?.first)
-                            dump(result)
-                            print(error)
-                        })
-                    }
-                     */
+                
                     
                     /*
                     let model = try VNCoreMLModel(for: VGG16().model)
@@ -202,9 +190,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
     
     
     func textToSpeech(text: String) {
+        print("for transkation" + text)
         let string = text
         let utterance = AVSpeechUtterance(string: string)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: Constants.Languages.labelLang[Constants.Languages.targetLang]!)
         
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
@@ -253,26 +242,23 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
                             if let tags = tagsCaptions["tags"] as? [String] {
                                 // this is the label that is attached to an object and the best achieved singular description
                                 if (tags[0] == "indoor" || tags[0] == "outdoor") {
-                                    let translated = self.translate(text: tags[1], from: "en", to: "es")
-                                    //sleep(10)
-                                    self.drawLabel(descrip: translated)
-                                    self.textToSpeech(text: translated)
+                                    let translated = self.translate(text: tags[1], from: "en", to: Constants.Languages.labelLang[Constants.Languages.targetLang]!, isLabel: true)
                                 }
                                 else{
-                                    let translated = self.translate(text: tags[0], from: "en", to: "es")
-                                    //sleep(10)
-                                    self.drawLabel(descrip: translated)
-                                    self.textToSpeech(text: translated)
+                                    let translated = self.translate(text: tags[0], from: "en", to: Constants.Languages.labelLang[Constants.Languages.targetLang]!, isLabel: true)
                                 }
                             }
                             
-                            if let captions = tagsCaptions["captions"] as? [Any] {
-                                if let best = captions[0] as? [String: Any] {
-                                    let typeString = String(describing: type(of: best))
-                                    print(typeString)
-                                    if let set = best["text"] as? String {
-                                        // this is the best version of a description of what's going on
-                                        self.textToSpeech(text: set)
+                            if Constants.Settings.phrasesOn {
+                                if let captions = tagsCaptions["captions"] as? [Any] {
+                                    if let best = captions[0] as? [String: Any] {
+                                        let typeString = String(describing: type(of: best))
+                                        print(typeString)
+                                        if let set = best["text"] as? String {
+                                            // this is the best version of a description of what's going on
+                                            print("this is the set to be translatied" + set)
+                                            self.translate(text: set, from: "en", to: Constants.Languages.labelLang[Constants.Languages.targetLang]!, isLabel: false)
+                                        }
                                     }
                                 }
                             }
@@ -290,11 +276,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
     }
     
     
-    func translate(text: String, from: String, to: String)->String {
+    func translate(text: String, from: String, to: String, isLabel: Bool)->String {
         print("received text" + text)
+        let toSay = text.replacingOccurrences(of: " ", with: "_")
         let toLanguageComponent = "&to=\(to)"
         let fromLanguageComponent = "&from=\(from)"
-        let urlString = "https://api.microsofttranslator.com/v2/Http.svc/Translate?text=\(text)\(toLanguageComponent)\(fromLanguageComponent)"
+        let urlString = "https://api.microsofttranslator.com/v2/Http.svc/Translate?text=\(toSay)\(toLanguageComponent)\(fromLanguageComponent)"
             
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL)
         request.httpMethod = "GET"
@@ -310,9 +297,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
                 }
                 
                 translation = self.translationFromXML(XML: xmlString)
-                print("the trans is " + translation)
-                print("shoudldraw" + translation)
-                self.drawLabel(descrip: translation)
+                
+                if Constants.Settings.phrasesOn {
+                    self.textToSpeech(text: translation)
+                }
+                
+                if isLabel {
+                    self.drawLabel(descrip: translation)
+                    if !Constants.Settings.phrasesOn {
+                        self.textToSpeech(text: translation)
+                    }
+                }
+                
                 do {
                     let dict = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
                 } catch {
