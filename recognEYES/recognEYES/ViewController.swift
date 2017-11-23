@@ -14,8 +14,10 @@ import Vision
 import AVFoundation
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
-    
+    // Outlets
     @IBOutlet var sceneView: ARSCNView!
+    
+    // Variables
     let activityIndicator = UIActivityIndicatorView()
     var isLoading: Bool = false
     
@@ -31,16 +33,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
+        // initiate activityIndiator and add to view
         activityIndicator.hidesWhenStopped = true
         activityIndicator.center = self.view.center
         sceneView.addSubview(activityIndicator)
         
+        // Programatically create resetButton at top left corner of screen
         let resetButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         resetButton.setImage(UIImage(named: "ResetIcon"), for: .normal)
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: UIControlEvents.touchUpInside)
         sceneView.addSubview(resetButton)
         resetButton.center = CGPoint(x: resetButton.frame.width, y: resetButton.frame.height)
         
+        // Programatically create settingsButton at top right corner of screen
         let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         settingsButton.setImage(UIImage(named: "SettingsIcon"), for: .normal)
         settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: UIControlEvents.touchUpInside)
@@ -72,35 +77,37 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
-        
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
     }
+
+    // Method to remove all previously placed label nodes from the ARScene
     @objc func resetButtonTapped() {
         
         guard let sceneView = self.sceneView else {
             return
         }
         
+        // Iterate through all nodes and remove
         for node in sceneView.scene.rootNode.childNodes {
             node.removeFromParentNode()
         }
     }
     
+    // Method to programatically call segue for settings window
     @objc func settingsButtonTapped() {
-        print("shoudl perform sgue")
         self.performSegue(withIdentifier: "openSettings", sender: self)
     }
     
+    // Method to identify touches on the screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Check isLoading condition to make sure new call cannot be activated prior to previous one ending
         if(!isLoading) {
             isLoading = true
             animateLoading(run: isLoading)
@@ -114,8 +121,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
             if let currentFrame = sceneView.session.currentFrame {
                 DispatchQueue.global(qos: .background).async {
                     do {
+                        // Obtain screenshot of the AR Scene
                         var image = sceneView.snapshot()
                         
+                        // Pass image to getData method for Microsoft API call
                         self.getData(image: image)
                         
                         /*
@@ -174,18 +183,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         }
     }
     
-    
+    // Method for converting text into speech depending on language settings
     func textToSpeech(text: String) {
-        print("for transkation" + text)
         let string = text
         let utterance = AVSpeechUtterance(string: string)
+        
+        // Obtain voice from global variables established in settings
         utterance.voice = AVSpeechSynthesisVoice(language: Constants.Languages.labelLang[Constants.Languages.targetLang]!)
         
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
     }
     
-    
+    // Method that passes image to Microsoft Vision API for object recognition
     func getData(image: UIImage) {
 
         // We need to specify that we want to retrieve tags for our image as a parameter to the URL.
@@ -261,7 +271,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         task.resume()
     }
     
-    
+    // Method that handles language translations through Microsoft Translate API
     func translate(text: String, from: String, to: String, isLabel: Bool)->String {
         print("received text" + text)
         let toSay = text.replacingOccurrences(of: " ", with: "_")
@@ -306,17 +316,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         task.resume()
         
         return translation
-
     }
 
+    // Helper method to extract XML data into String formate
     private func translationFromXML(XML: String) -> String {
         let translation = XML.replacingOccurrences(of: "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">", with: "")
         return translation.replacingOccurrences(of: "</string>", with: "")
     }
  
-    
+    // Method to draw AR labels for vocabulary words
     func drawLabel(descrip: String) {
-        print("this is " + descrip)
         let text = SCNText(string: descrip, extrusionDepth: 0.01)
         text.firstMaterial?.diffuse.contents = UIColor.white
         text.font = UIFont(name: "Arial", size: 0.2)
@@ -331,13 +340,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSKViewDelegate {
         
         sceneView.scene.rootNode.addChildNode(textNode)
         
-        DispatchQueue.main.async { // Correct
+        // Call main thread to change UI
+        DispatchQueue.main.async {
             self.isLoading = false
             self.animateLoading(run: self.isLoading)
         }
     }
     
+    // Method to change status of activityIndicator
     func animateLoading(run: Bool) {
+        
         if(run) {
             activityIndicator.startAnimating()
         } else {

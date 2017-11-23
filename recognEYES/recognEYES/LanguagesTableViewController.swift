@@ -25,20 +25,6 @@ class LanguagesTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-    /*
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
-        
-        let currentCell = tableView.cellForRow(at: indexPath!) as UITableViewCell!
-        
-        print(currentCell?.reuseIdentifier)
-        print("should give reuse")
-        Constants.Settings.language = (currentCell?.textLabel!.text)!
-    }
-    */
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as UITableViewCell!
